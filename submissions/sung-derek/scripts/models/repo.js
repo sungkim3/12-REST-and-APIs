@@ -1,7 +1,9 @@
 (function(module) {
   var repos = {};
+  var followers = {};
 
   repos.all = [];
+  followers.all = [];
 
   repos.requestRepos = function(callback) {
     /* DONE: How would you like to fetch your repos? Someone say AJAX!?
@@ -13,7 +15,16 @@
       headers: {'Authorization': 'token ' + gitHubToken},
       success: function(data) {
         repos.all = data;
-        callback();
+        $.ajax({
+          url: 'https://api.github.com/users/sungkim3/followers' +
+                '?sort=updated',
+          type: 'GET',
+          headers: {'Authorization': 'token ' + gitHubToken},
+          success: function(data) {
+            followers.all = data;
+            callback();
+          }
+        });
       }
     });
   };
@@ -24,9 +35,10 @@
         repos that have a non-zero `forks_count`, `stargazers_count`,
         or `watchers_count`. */
     return repos.all.filter(function(repo) {
-      return repo[attr];
+      return repo[attr]; 
     });
   };
 
   module.repos = repos;
+  module.followers = followers;
 })(window);

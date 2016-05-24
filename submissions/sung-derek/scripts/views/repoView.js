@@ -7,6 +7,7 @@
     var $about = $('#about'); // Best practice: Cache the DOM query if it's used more than once.
 
     $about.find('ul').empty();
+    //$about.find('.followers').empty();
     $about.show().siblings().hide();
   };
 
@@ -14,13 +15,16 @@
       Save the result in this `render` variable that we will pass to
       the append method below. */
   var render = Handlebars.compile($('#repo-template').html());/*DONE: finish this line */;
-
+  var renderFollowers = Handlebars.compile($('#followers-template').html());
   /* NOTE: If all the data is loaded, we can prep the UI and
       render the repos. */
   repoView.index = function() {
     ui();
-    $('#about ul').append(
+    $('#about .repos').append(
       repos.with('name').map(render)
+    );
+    $('#about .followers').append(
+      followers.all.map(renderFollowers)
     );
     /* NOTE: This jQuery `append` method lets us append an entire array
         of HTML elements at once, so we can use a little FP to

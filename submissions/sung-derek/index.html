@@ -48,6 +48,9 @@
         {{/if}}
       </li>
     </script>
+  <script id="followers-template" type="text/x-handlebars-template">
+    <li><a href="{{html_url}}">{{login}}</a></li>
+  </script>
   </head>
   <body>
     <header class="site-header clearfix">
@@ -88,11 +91,15 @@
       </section>
       <section id="about" class="tab-content">
         <header>
-          Welcome to my Blog
+          <h3>Welcome to my Blog</h3>
         </header>
-        <section>
-          <h1>Check out my Projects on GitHub:</h1>
-          <ul>
+        <section class="github-data">
+          <h3>People following my Repos:</h3>
+          <ul class="followers">
+            <li>Followers Go Here</li>
+          </ul>
+          <h3>Check out my Projects on GitHub:</h3>
+          <ul class="repos">
             <li>Coding Projects Go Here</li>
           </ul>
         </section>

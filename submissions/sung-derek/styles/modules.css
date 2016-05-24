@@ -57,6 +57,21 @@
   font-style: italic;
   color: #ccc;
 }
+.repos li p{
+  margin: 0;
+  line-height: 1.3em;
+  padding-left: 1em;
+}
+.github-data h3 {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+.github-data li {
+  list-style: none;
+}
+.repos h3 {
+  border-bottom: solid 1px black;
+}
 
 @media only screen and (min-width: 640px) {
   .icon-menu {
