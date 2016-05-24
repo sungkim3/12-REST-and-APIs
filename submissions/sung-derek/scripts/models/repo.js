@@ -4,9 +4,18 @@
   repos.all = [];
 
   repos.requestRepos = function(callback) {
-    /* TODO: How would you like to fetch your repos? Someone say AJAX!?
+    /* DONE: How would you like to fetch your repos? Someone say AJAX!?
        Don't forget to call the callback! */
-
+    $.ajax({
+      url: 'https://api.github.com/users/sungkim3/repos' +
+            '?sort=updated',
+      type: 'GET',
+      headers: {'Authorization': 'token ' + gitHubToken},
+      success: function(data) {
+        repos.all = data;
+        callback();
+      }
+    });
   };
 
   repos.with = function(attr) {
